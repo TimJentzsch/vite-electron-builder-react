@@ -13,7 +13,7 @@
     "compile": "electron-builder build --config electron-builder.config.js --dir --config.asar=false",
     "pretest": "cross-env MODE=test yarn build",
     "test": "node tests/app.spec.js",
-    "watch": "node scripts/watch.js",
+    "dev": "node scripts/watch.js",
     "lint": "eslint . --ext js,ts,vue",
     "pretypecheck": "yarn buildEnvTypes",
     "typecheck-main": "tsc --noEmit -p packages/main/tsconfig.json",
