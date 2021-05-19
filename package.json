@@ -1,56 +1,53 @@
 {
-  "name": "vite-electron-builder",
+  "name": "vite-electron-builder-react",
+  "description": "Based on https://github.com/cawa-93/vite-electron-builder",
   "private": true,
   "engines": {
-    "node": ">=v14.16",
-    "npm": ">=7.7"
+    "node": ">=v14.16"
   },
   "main": "packages/main/dist/index.cjs",
   "scripts": {
     "buildEnvTypes": "node scripts/buildEnvTypes.js",
     "build": "node scripts/build.js",
-    "precompile": "cross-env MODE=production npm run build",
+    "precompile": "cross-env MODE=production yarn build",
     "compile": "electron-builder build --config electron-builder.config.js --dir --config.asar=false",
-    "pretest": "cross-env MODE=test npm run build",
+    "pretest": "cross-env MODE=test yarn build",
     "test": "node tests/app.spec.js",
     "watch": "node scripts/watch.js",
     "lint": "eslint . --ext js,ts,vue",
-    "pretypecheck": "npm run buildEnvTypes",
+    "pretypecheck": "yarn buildEnvTypes",
     "typecheck-main": "tsc --noEmit -p packages/main/tsconfig.json",
     "typecheck-preload": "tsc --noEmit -p packages/preload/tsconfig.json",
     "typecheck-renderer": "vue-tsc --noEmit -p packages/renderer/tsconfig.json",
-    "typecheck": "npm run typecheck-main && npm run typecheck-preload && npm run typecheck-renderer"
+    "typecheck": "yarn typecheck-main && yarn typecheck-preload && yarn typecheck-renderer"
   },
   "browserslist": [
     "Chrome 89"
   ],
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
-    "pre-push": "npm run typecheck"
+    "pre-push": "yarn typecheck"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "eslint --cache --fix"
+    "*.{js,ts}": "eslint --cache --fix"
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
-    "@vitejs/plugin-vue": "^1.2.2",
     "cross-env": "^7.0.3",
     "electron": "^12.0.8",
     "electron-builder": "^22.11.4",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^7.26.0",
-    "eslint-plugin-vue": "^7.9.0",
     "lint-staged": "^11.0.0",
     "simple-git-hooks": "^2.4.1",
     "spectron": "^14.0.0",
     "typescript": "^4.2.4",
-    "vite": "^2.3.3",
-    "vue-tsc": "^0.1.4"
+    "vite": "^2.3.3"
   },
   "dependencies": {
     "electron-updater": "^4.3.9",
-    "vue": "^3.0.11",
-    "vue-router": "^4.0.8"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
